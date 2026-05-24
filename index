@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bagas DH • Neon Card</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
+
+body{
+background:radial-gradient(circle at top,#0a84ff55,#000 70%);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+/* ===== NEON WRAPPER ===== */
+.card-wrap{
+position:relative;
+width:360px;
+border-radius:32px;
+padding:2px;
+z-index:2;
+}
+
+/* animated neon border */
+.card-wrap::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:32px;
+padding:2px;
+background:linear-gradient(
+270deg,
+#00c3ff,
+#1e90ff,
+#7a5cff,
+#00ffd5,
+#00c3ff
+);
+background-size:400% 400%;
+animation:neonMove 6s linear infinite;
+filter:blur(8px);
+opacity:0.9;
+z-index:0;
+}
+
+/* inner glass */
+.card-wrap::after{
+content:"";
+position:absolute;
+inset:2px;
+border-radius:30px;
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(25px);
+z-index:1;
+}
+
+/* CARD CONTENT */
+.card{
+position:relative;
+z-index:2;
+border-radius:30px;
+overflow:hidden;
+color:#fff;
+}
+
+/* HERO */
+.hero{
+height:180px;
+position:relative;
+overflow:hidden;
+}
+
+.hero img{
+width:120%;
+height:120%;
+object-fit:cover;
+filter:blur(22px) brightness(0.5);
+transform:scale(1.3);
+position:absolute;
+}
+
+.hero .main{
+width:100%;
+height:100%;
+object-fit:contain;
+position:absolute;
+z-index:2;
+}
+
+/* PROFILE */
+.profile{
+width:92px;
+height:92px;
+border-radius:24px;
+border:3px solid #1e90ff;
+position:absolute;
+top:130px;
+left:18px;
+object-fit:cover;
+z-index:5;
+box-shadow:0 20px 60px rgba(30,144,255,0.5);
+}
+
+/* CONTENT */
+.content{
+padding:65px 18px 18px;
+}
+
+.name{
+font-size:24px;
+font-weight:900;
+}
+
+.tag{
+font-size:11px;
+color:#9ccfff;
+margin-top:5px;
+}
+
+.badge{
+display:inline-block;
+margin-top:10px;
+padding:6px 14px;
+background:linear-gradient(90deg,#1e90ff,#00c3ff);
+color:#000;
+font-size:10px;
+font-weight:800;
+border-radius:999px;
+}
+
+/* STATS */
+.stats{
+margin-top:14px;
+display:flex;
+gap:8px;
+}
+
+.stat{
+flex:1;
+text-align:center;
+padding:8px;
+border-radius:14px;
+background:rgba(30,144,255,0.12);
+border:1px solid rgba(30,144,255,0.2);
+}
+
+.stat h3{font-size:13px;}
+.stat p{font-size:9px;color:#9ccfff;}
+
+/* TRACK */
+.track{
+margin-top:16px;
+display:flex;
+gap:12px;
+align-items:center;
+padding:14px;
+border-radius:20px;
+background:linear-gradient(135deg,rgba(0,140,255,0.18),rgba(0,0,0,0.25));
+border:1px solid rgba(0,140,255,0.25);
+}
+
+.track img{
+width:65px;
+height:65px;
+border-radius:16px;
+object-fit:cover;
+}
+
+.track h4{
+font-size:13px;
+font-weight:900;
+}
+
+.track small{
+font-size:9px;
+color:#9ccfff;
+display:block;
+margin-top:3px;
+}
+
+.track a{
+font-size:10px;
+color:#00aaff;
+text-decoration:none;
+font-weight:700;
+display:inline-block;
+margin-top:5px;
+}
+
+/* LINKS */
+.links{
+margin-top:14px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.link{
+padding:12px;
+border-radius:16px;
+background:rgba(30,144,255,0.08);
+border:1px solid rgba(30,144,255,0.15);
+}
+
+.link-title{
+display:flex;
+align-items:center;
+gap:8px;
+font-size:11px;
+font-weight:700;
+}
+
+.icon{
+width:22px;
+height:22px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:7px;
+font-size:10px;
+font-weight:900;
+}
+
+.spotify{background:#1e90ff;}
+.apple{background:#4da3ff;}
+.deezer{background:#0077ff;}
+.amazon{background:#3399ff;}
+.youtube{background:#00a2ff;}
+
+.url{
+margin-top:5px;
+font-size:9px;
+color:#9ccfff;
+word-break:break-all;
+}
+
+/* QR */
+.qr{
+margin-top:12px;
+display:none;
+justify-content:center;
+}
+
+.qr img{
+width:75px;
+height:75px;
+background:#fff;
+padding:4px;
+border-radius:12px;
+}
+
+/* BUTTON */
+button{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+border:none;
+background:#1e90ff;
+color:#fff;
+font-size:20px;
+cursor:pointer;
+}
+
+/* NEON ANIMATION */
+@keyframes neonMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card-wrap">
+
+<div class="card" id="card">
+
+<!-- HERO -->
+<div class="hero">
+<img src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
+<img class="main" src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
+</div>
+
+<img class="profile" src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
+
+<div class="content">
+
+<div class="name">Bagas DH</div>
+<div class="tag">Music Producer • Surabaya</div>
+
+<div class="badge">✔ VERIFIED ARTIST</div>
+
+<!-- STATS -->
+<div class="stats" id="statsBox">
+<div class="stat">
+<h3 id="visitors">0</h3>
+<p>Visitors</p>
+</div>
+<div class="stat">
+<h3 id="today">0</h3>
+<p>Today</p>
+</div>
+<div class="stat">
+<h3 id="ip">...</h3>
+<p>IP</p>
+</div>
+</div>
+
+<!-- TRACK -->
+<div class="track">
+<img src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
+
+<div>
+<h4>Suroboyo Gak Tau Turu</h4>
+<small>🔥 Most Played</small>
+<a href="https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb">▶ Listen Spotify</a>
+</div>
+</div>
+
+<!-- LINKS -->
+<div class="links">
+
+<div class="link">
+<div class="link-title"><div class="icon spotify">S</div>Spotify</div>
+<div class="url">https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb</div>
+</div>
+
+<div class="link">
+<div class="link-title"><div class="icon apple"></div>Apple Music</div>
+<div class="url">https://music.apple.com/us/artist/bagas-dh/1896600580</div>
+</div>
+
+<div class="link">
+<div class="link-title"><div class="icon deezer">D</div>Deezer</div>
+<div class="url">https://www.deezer.com/artist/389398381</div>
+</div>
+
+<div class="link">
+<div class="link-title"><div class="icon amazon">A</div>Amazon Music</div>
+<div class="url">https://music.amazon.com/artists/B0GZNCM6XJ</div>
+</div>
+
+<div class="link">
+<div class="link-title"><div class="icon youtube">▶</div>YouTube Music</div>
+<div class="url">https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg</div>
+</div>
+
+</div>
+
+<!-- QR -->
+<div class="qr" id="qr">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://open.spotify.com">
+</div>
+
+</div>
+</div>
+
+<button onclick="download()">⬇</button>
+
+<script>
+
+// VISITOR
+let v = localStorage.getItem("visitors") || 0;
+v++;
+localStorage.setItem("visitors", v);
+document.getElementById("visitors").innerText = v;
+
+// TODAY
+let key = "today_" + new Date().toDateString();
+let t = localStorage.getItem(key) || 0;
+t++;
+localStorage.setItem(key, t);
+document.getElementById("today").innerText = t;
+
+// IP
+fetch("https://api.ipify.org?format=json")
+.then(r=>r.json())
+.then(d=>{
+document.getElementById("ip").innerText = d.ip;
+});
+
+// DOWNLOAD
+async function download(){
+
+document.getElementById("qr").style.display="flex";
+document.getElementById("statsBox").style.display="none";
+
+const el=document.getElementById("card");
+
+const canvas=await html2canvas(el,{
+scale:3,
+useCORS:true,
+backgroundColor:"#000"
+});
+
+const a=document.createElement("a");
+a.download="bagas-neon-card.png";
+a.href=canvas.toDataURL("image/png");
+a.click();
+
+setTimeout(()=>{
+document.getElementById("qr").style.display="none";
+document.getElementById("statsBox").style.display="flex";
+},1000);
+
+}
+
+</script>
+
+</body>
+</html>
