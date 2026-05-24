@@ -152,7 +152,7 @@ border:1px solid rgba(30,144,255,0.2);
 .stat h3{font-size:13px;}
 .stat p{font-size:9px;color:#9ccfff;}
 
-/* TRACK (INI AKAN DIHIDE SAAT EXPORT) */
+/* TRACK */
 .track{
 margin-top:16px;
 display:flex;
@@ -173,15 +173,6 @@ object-fit:cover;
 
 .track h4{font-size:13px;font-weight:900;}
 .track small{font-size:9px;color:#9ccfff;display:block;margin-top:3px;}
-
-.track a{
-font-size:10px;
-color:#00aaff;
-text-decoration:none;
-font-weight:700;
-display:inline-block;
-margin-top:5px;
-}
 
 /* LINKS */
 .links{
@@ -223,11 +214,20 @@ font-weight:900;
 .amazon{background:#3399ff;}
 .youtube{background:#00a2ff;}
 
+/* URL LINK (CLICKABLE TEXT) */
 .url{
+display:block;
 margin-top:5px;
 font-size:9px;
 color:#9ccfff;
 word-break:break-all;
+text-decoration:none;
+transition:0.2s;
+}
+
+.url:hover{
+color:#00c3ff;
+text-decoration:underline;
 }
 
 /* QR */
@@ -268,7 +268,6 @@ cursor:pointer;
 100%{background-position:0% 50%}
 }
 
-/* PRINT CLEAN */
 @media print{
 button{display:none!important;}
 body{background:#000;}
@@ -305,41 +304,50 @@ body{background:#000;}
 <div class="stat"><h3 id="ip">...</h3><p>IP</p></div>
 </div>
 
-<!-- TRACK (NO EXPORT MODE) -->
-<div class="track no-export" id="track">
+<div class="track" id="track">
 <img src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
 <div>
 <h4>Suroboyo Gak Tau Turu</h4>
 <small>🔥 Most Played</small>
-<a href="https://open.spotify.com">▶ Listen Spotify</a>
 </div>
 </div>
 
+<!-- LINKS -->
 <div class="links">
 
 <div class="link">
 <div class="link-title"><div class="icon spotify">S</div>Spotify</div>
-<div class="url">https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb</div>
+<a class="url" href="https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb" target="_blank">
+https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb
+</a>
 </div>
 
 <div class="link">
 <div class="link-title"><div class="icon apple"></div>Apple Music</div>
-<div class="url">https://music.apple.com/us/artist/bagas-dh/1896600580</div>
+<a class="url" href="https://music.apple.com/us/artist/bagas-dh/1896600580" target="_blank">
+https://music.apple.com/us/artist/bagas-dh/1896600580
+</a>
 </div>
 
 <div class="link">
 <div class="link-title"><div class="icon deezer">D</div>Deezer</div>
-<div class="url">https://www.deezer.com/artist/389398381</div>
+<a class="url" href="https://www.deezer.com/artist/389398381" target="_blank">
+https://www.deezer.com/artist/389398381
+</a>
 </div>
 
 <div class="link">
 <div class="link-title"><div class="icon amazon">A</div>Amazon Music</div>
-<div class="url">https://music.amazon.com/artists/B0GZNCM6XJ</div>
+<a class="url" href="https://music.amazon.com/artists/B0GZNCM6XJ" target="_blank">
+https://music.amazon.com/artists/B0GZNCM6XJ
+</a>
 </div>
 
 <div class="link">
 <div class="link-title"><div class="icon youtube">▶</div>YouTube Music</div>
-<div class="url">https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg</div>
+<a class="url" href="https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg" target="_blank">
+https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg
+</a>
 </div>
 
 </div>
@@ -378,13 +386,11 @@ fetch("https://api.ipify.org?format=json")
 document.getElementById("ip").innerText = d.ip;
 });
 
-// DOWNLOAD (TRACK HIDDEN)
+// DOWNLOAD
 async function download(){
 
 document.getElementById("qr").style.display="flex";
 document.getElementById("statsBox").style.display="none";
-
-/* HIDE TRACK SAAT EXPORT */
 document.getElementById("track").style.display="none";
 
 const canvas = await html2canvas(document.getElementById("card"),{
@@ -398,7 +404,6 @@ a.download="bagas-neon-card.png";
 a.href=canvas.toDataURL("image/png");
 a.click();
 
-/* RESET */
 setTimeout(()=>{
 document.getElementById("qr").style.display="none";
 document.getElementById("statsBox").style.display="flex";
