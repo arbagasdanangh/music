@@ -415,7 +415,8 @@ background:#000;
 <img class="main" src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
 </div>
 
-<img class="profile" src="https://i.scdn.co/image/ab67616100005174cfe66a9d78691a42f9d55a19">
+<img class="profile"
+src="https://i.scdn.co/image/ab67616100005174cfe66a9d78691a42f9d55a19">
 
 <div class="content">
 
@@ -571,7 +572,8 @@ visitorData[todayKey] = [];
 
 visitorData[todayKey].push({
 time:new Date().toLocaleTimeString(),
-ip:"loading..."
+ip:"loading...",
+location:"loading..."
 });
 
 localStorage.setItem(
@@ -593,18 +595,27 @@ document.getElementById("today").innerText =
 visitorData[todayKey].length;
 
 // ======================
-// GET IP
+// GET IP + LOCATION
 // ======================
 
-fetch("https://api.ipify.org?format=json")
+fetch("https://ipapi.co/json/")
 .then(r=>r.json())
 .then(d=>{
 
-document.getElementById("ip").innerText = d.ip;
+const ip = d.ip || "-";
+
+const location =
+`${d.city || "-"}, ${d.region || "-"}, ${d.country_name || "-"}`;
+
+document.getElementById("ip").innerText = ip;
 
 visitorData[todayKey][
 visitorData[todayKey].length - 1
-].ip = d.ip;
+].ip = ip;
+
+visitorData[todayKey][
+visitorData[todayKey].length - 1
+].location = location;
 
 localStorage.setItem(
 "visitor_logs",
@@ -635,7 +646,8 @@ visitorData[todayKey]
 box.innerHTML += `
 <div class="log-item">
 🕒 ${v.time}<br>
-🌐 ${v.ip}
+🌐 ${v.ip || "-"}<br>
+📍 ${v.location || "-"}
 </div>
 `;
 
@@ -648,6 +660,8 @@ renderLogs();
 // ======================
 // VISITOR CHART
 // ======================
+
+let chart;
 
 function renderChart(){
 
@@ -662,7 +676,11 @@ totals.push(visitorData[date].length);
 const ctx =
 document.getElementById("visitorChart");
 
-new Chart(ctx,{
+if(chart){
+chart.destroy();
+}
+
+chart = new Chart(ctx,{
 type:"line",
 data:{
 labels:labels,
