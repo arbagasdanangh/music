@@ -16,6 +16,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -315,17 +316,17 @@ line-height:1.6;
 
 /* QR */
 .qr{
-margin-top:12px;
+margin-top:18px;
 display:none;
 justify-content:center;
 }
 
 .qr img{
-width:75px;
-height:75px;
+width:90px;
+height:90px;
 background:#fff;
 padding:4px;
-border-radius:12px;
+border-radius:14px;
 }
 
 /* BUTTONS */
@@ -422,6 +423,7 @@ body{
 background:#000;
 }
 }
+
 </style>
 </head>
 
@@ -433,19 +435,26 @@ background:#000;
 
 <div class="watermark">OFFICIAL BAGAS DH</div>
 
+<!-- HERO -->
 <div class="hero">
+
 <img src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
+
 <img class="main"
 src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
+
 </div>
 
+<!-- PROFILE -->
 <img class="profile"
 src="https://i.scdn.co/image/ab67616100005174cfe66a9d78691a42f9d55a19">
 
 <div class="content">
 
 <div class="name">Bagas DH</div>
+
 <div class="tag">Music Producer • Surabaya</div>
+
 <div class="tag">Available on all platforms</div>
 
 <div class="badge">✔ VERIFIED ARTIST</div>
@@ -486,6 +495,7 @@ src="https://i.scdn.co/image/ab67616100005174cfe66a9d78691a42f9d55a19">
 <div class="links">
 
 <div class="link">
+
 <div class="link-title">
 <div class="icon spotify">
 <i class="fa-brands fa-spotify"></i>
@@ -498,9 +508,11 @@ href="https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb"
 target="_blank">
 https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb
 </a>
+
 </div>
 
 <div class="link">
+
 <div class="link-title">
 <div class="icon apple">
 <i class="fa-brands fa-apple"></i>
@@ -513,13 +525,13 @@ href="https://music.apple.com/us/artist/bagas-dh/1896600580"
 target="_blank">
 https://music.apple.com/us/artist/bagas-dh/1896600580
 </a>
+
 </div>
 
 <div class="link">
+
 <div class="link-title">
-<div class="icon deezer">
-D
-</div>
+<div class="icon deezer">D</div>
 Deezer
 </div>
 
@@ -528,13 +540,13 @@ href="https://www.deezer.com/artist/389398381"
 target="_blank">
 https://www.deezer.com/artist/389398381
 </a>
+
 </div>
 
 <div class="link">
+
 <div class="link-title">
-<div class="icon amazon">
-A
-</div>
+<div class="icon amazon">A</div>
 Amazon Music
 </div>
 
@@ -543,9 +555,11 @@ href="https://music.amazon.com/artists/B0GZNCM6XJ"
 target="_blank">
 https://music.amazon.com/artists/B0GZNCM6XJ
 </a>
+
 </div>
 
 <div class="link">
+
 <div class="link-title">
 <div class="icon youtube">
 <i class="fa-brands fa-youtube"></i>
@@ -558,6 +572,7 @@ href="https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg"
 target="_blank">
 https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg
 </a>
+
 </div>
 
 </div>
@@ -575,7 +590,9 @@ https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg
 
 <!-- QR -->
 <div class="qr" id="qr">
+
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb">
+
 </div>
 
 </div>
@@ -760,21 +777,43 @@ function toggleLogs(){
 const logs = document.querySelector(".logs");
 
 if(logs.style.display === "block"){
+
 logs.style.display = "none";
+
 }else{
+
 logs.style.display = "block";
+
 renderChart();
+
 }
 
 }
 
 // ======================
-// DOWNLOAD
+// DOWNLOAD FIX
 // ======================
 
 async function download(){
 
-document.getElementById("qr").style.display="flex";
+const qr = document.getElementById("qr");
+
+const stats = document.getElementById("statsBox");
+
+const track = document.getElementById("track");
+
+const logs = document.querySelector(".logs");
+
+// show QR
+qr.style.display = "flex";
+
+// hide stats & logs
+stats.style.display = "none";
+track.style.display = "none";
+logs.style.display = "none";
+
+// wait render
+await new Promise(resolve => setTimeout(resolve, 300));
 
 const canvas =
 await html2canvas(
@@ -794,9 +833,16 @@ a.href=canvas.toDataURL("image/png");
 
 a.click();
 
+// restore
 setTimeout(()=>{
-document.getElementById("qr").style.display="none";
-},800);
+
+qr.style.display = "none";
+
+stats.style.display = "flex";
+
+track.style.display = "flex";
+
+},500);
 
 }
 
