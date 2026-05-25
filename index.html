@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bagas DH • Official Card</title>
+<title>Bagas DH • Official Neon Card</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 *{
@@ -42,7 +44,14 @@ content:"";
 position:absolute;
 inset:0;
 border-radius:32px;
-background:linear-gradient(270deg,#00c3ff,#1e90ff,#7a5cff,#00ffd5,#00c3ff);
+background:linear-gradient(
+270deg,
+#00c3ff,
+#1e90ff,
+#7a5cff,
+#00ffd5,
+#00c3ff
+);
 background-size:400% 400%;
 animation:move 6s linear infinite;
 filter:blur(10px);
@@ -241,7 +250,6 @@ font-weight:900;
 .amazon{background:#3399ff;}
 .youtube{background:#00a2ff;}
 
-/* URL */
 .url{
 display:block;
 margin-top:5px;
@@ -255,6 +263,31 @@ transition:0.2s;
 .url:hover{
 color:#00c3ff;
 text-decoration:underline;
+}
+
+/* VISITOR LOG */
+.logs{
+display:none;
+margin-top:18px;
+padding:14px;
+border-radius:18px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+max-height:500px;
+overflow:auto;
+}
+
+.logs h4{
+font-size:12px;
+margin-bottom:10px;
+color:#9ccfff;
+}
+
+.log-item{
+font-size:10px;
+padding:8px;
+border-bottom:1px solid rgba(255,255,255,0.08);
+line-height:1.6;
 }
 
 /* QR */
@@ -287,7 +320,6 @@ box-shadow:0 8px 25px rgba(0,0,0,0.45);
 backdrop-filter:blur(10px);
 }
 
-/* desktop */
 .download-btn{
 right:15px;
 background:#1e90ff;
@@ -303,6 +335,12 @@ color:#fff;
 .print-btn{
 right:145px;
 background:#fff;
+color:#000;
+}
+
+.log-btn{
+right:210px;
+background:#00c3ff;
 color:#000;
 }
 
@@ -337,6 +375,7 @@ bottom:10px;
 .download-btn{right:10px;}
 .share-btn{right:68px;}
 .print-btn{right:126px;}
+.log-btn{right:184px;}
 
 .profile{
 width:82px;
@@ -386,10 +425,12 @@ background:#000;
 
 <div class="badge">✔ VERIFIED ARTIST</div>
 
+<!-- STATS -->
 <div class="stats" id="statsBox">
+
 <div class="stat">
 <h3 id="visitors">0</h3>
-<p>Visitors</p>
+<p>Total</p>
 </div>
 
 <div class="stat">
@@ -401,15 +442,19 @@ background:#000;
 <h3 id="ip">...</h3>
 <p>IP</p>
 </div>
+
 </div>
 
+<!-- TRACK -->
 <div class="track" id="track">
+
 <img src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
 
 <div>
 <h4>Suroboyo Gak Tau Turu</h4>
 <small>🔥 Most Played</small>
 </div>
+
 </div>
 
 <!-- LINKS -->
@@ -421,7 +466,9 @@ background:#000;
 Spotify
 </div>
 
-<a class="url" href="https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb" target="_blank">
+<a class="url"
+href="https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb"
+target="_blank">
 https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb
 </a>
 </div>
@@ -432,7 +479,9 @@ https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb
 Apple Music
 </div>
 
-<a class="url" href="https://music.apple.com/us/artist/bagas-dh/1896600580" target="_blank">
+<a class="url"
+href="https://music.apple.com/us/artist/bagas-dh/1896600580"
+target="_blank">
 https://music.apple.com/us/artist/bagas-dh/1896600580
 </a>
 </div>
@@ -443,7 +492,9 @@ https://music.apple.com/us/artist/bagas-dh/1896600580
 Deezer
 </div>
 
-<a class="url" href="https://www.deezer.com/artist/389398381" target="_blank">
+<a class="url"
+href="https://www.deezer.com/artist/389398381"
+target="_blank">
 https://www.deezer.com/artist/389398381
 </a>
 </div>
@@ -454,7 +505,9 @@ https://www.deezer.com/artist/389398381
 Amazon Music
 </div>
 
-<a class="url" href="https://music.amazon.com/artists/B0GZNCM6XJ" target="_blank">
+<a class="url"
+href="https://music.amazon.com/artists/B0GZNCM6XJ"
+target="_blank">
 https://music.amazon.com/artists/B0GZNCM6XJ
 </a>
 </div>
@@ -465,15 +518,29 @@ https://music.amazon.com/artists/B0GZNCM6XJ
 YouTube Music
 </div>
 
-<a class="url" href="https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg" target="_blank">
+<a class="url"
+href="https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg"
+target="_blank">
 https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg
 </a>
 </div>
 
 </div>
 
+<!-- VISITOR LOG -->
+<div class="logs">
+
+<h4>📊 Visitor Logs Today</h4>
+
+<div id="visitorLogs"></div>
+
+<canvas id="visitorChart" height="180"></canvas>
+
+</div>
+
+<!-- QR -->
 <div class="qr" id="qr">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://open.spotify.com/artist/4cq9Okxny8botIB7i2ostb">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://open.spotify.com">
 </div>
 
 </div>
@@ -484,56 +551,207 @@ https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg
 <button class="download-btn" onclick="download()">⬇</button>
 <button class="share-btn" onclick="shareCard()">⤴</button>
 <button class="print-btn" onclick="printCard()">🖨</button>
+<button class="log-btn" onclick="toggleLogs()">📊</button>
 
 <script>
 
-// VISITOR
-let v = localStorage.getItem("visitors") || 0;
-v++;
-localStorage.setItem("visitors", v);
-document.getElementById("visitors").innerText = v;
+// ======================
+// VISITOR ARRAY SYSTEM
+// ======================
 
-// TODAY
-let key = "today_" + new Date().toDateString();
-let t = localStorage.getItem(key) || 0;
-t++;
-localStorage.setItem(key, t);
-document.getElementById("today").innerText = t;
+const todayKey =
+new Date().toISOString().split("T")[0];
 
-// IP
+let visitorData =
+JSON.parse(localStorage.getItem("visitor_logs")) || {};
+
+if(!visitorData[todayKey]){
+visitorData[todayKey] = [];
+}
+
+visitorData[todayKey].push({
+time:new Date().toLocaleTimeString(),
+ip:"loading..."
+});
+
+localStorage.setItem(
+"visitor_logs",
+JSON.stringify(visitorData)
+);
+
+// TOTAL VISITOR
+let totalVisitors = 0;
+
+Object.keys(visitorData).forEach(date=>{
+totalVisitors += visitorData[date].length;
+});
+
+document.getElementById("visitors").innerText =
+totalVisitors;
+
+document.getElementById("today").innerText =
+visitorData[todayKey].length;
+
+// ======================
+// GET IP
+// ======================
+
 fetch("https://api.ipify.org?format=json")
 .then(r=>r.json())
 .then(d=>{
+
 document.getElementById("ip").innerText = d.ip;
+
+visitorData[todayKey][
+visitorData[todayKey].length - 1
+].ip = d.ip;
+
+localStorage.setItem(
+"visitor_logs",
+JSON.stringify(visitorData)
+);
+
+renderLogs();
+renderChart();
+
 });
 
+// ======================
+// RENDER LOGS
+// ======================
+
+function renderLogs(){
+
+const box =
+document.getElementById("visitorLogs");
+
+box.innerHTML = "";
+
+visitorData[todayKey]
+.slice()
+.reverse()
+.forEach(v=>{
+
+box.innerHTML += `
+<div class="log-item">
+🕒 ${v.time}<br>
+🌐 ${v.ip}
+</div>
+`;
+
+});
+
+}
+
+renderLogs();
+
+// ======================
+// VISITOR CHART
+// ======================
+
+function renderChart(){
+
+const labels = [];
+const totals = [];
+
+Object.keys(visitorData).forEach(date=>{
+labels.push(date);
+totals.push(visitorData[date].length);
+});
+
+const ctx =
+document.getElementById("visitorChart");
+
+new Chart(ctx,{
+type:"line",
+data:{
+labels:labels,
+datasets:[{
+label:"Visitors",
+data:totals,
+borderColor:"#00c3ff",
+backgroundColor:"rgba(0,195,255,0.2)",
+fill:true,
+tension:0.4
+}]
+},
+options:{
+responsive:true,
+plugins:{
+legend:{
+labels:{
+color:"#fff"
+}
+}
+},
+scales:{
+x:{
+ticks:{color:"#9ccfff"},
+grid:{color:"rgba(255,255,255,0.05)"}
+},
+y:{
+ticks:{color:"#9ccfff"},
+grid:{color:"rgba(255,255,255,0.05)"}
+}
+}
+}
+});
+
+}
+
+// ======================
+// TOGGLE LOGS
+// ======================
+
+function toggleLogs(){
+
+const logs = document.querySelector(".logs");
+
+if(logs.style.display === "block"){
+logs.style.display = "none";
+}else{
+logs.style.display = "block";
+renderChart();
+}
+
+}
+
+// ======================
 // DOWNLOAD
+// ======================
+
 async function download(){
 
 document.getElementById("qr").style.display="flex";
-document.getElementById("statsBox").style.display="none";
-document.getElementById("track").style.display="none";
 
-const canvas = await html2canvas(document.getElementById("card"),{
+const canvas =
+await html2canvas(
+document.getElementById("card"),
+{
 scale:3,
 useCORS:true,
 backgroundColor:"#000"
-});
+}
+);
 
 const a=document.createElement("a");
+
 a.download="bagas-neon-card.png";
+
 a.href=canvas.toDataURL("image/png");
+
 a.click();
 
 setTimeout(()=>{
 document.getElementById("qr").style.display="none";
-document.getElementById("statsBox").style.display="flex";
-document.getElementById("track").style.display="flex";
 },800);
 
 }
 
+// ======================
 // SHARE
+// ======================
+
 function shareCard(){
 
 const data={
@@ -543,15 +761,23 @@ url:location.href
 };
 
 if(navigator.share){
+
 navigator.share(data);
+
 }else{
+
 navigator.clipboard.writeText(location.href);
+
 alert("Link copied!");
-}
 
 }
 
+}
+
+// ======================
 // PRINT
+// ======================
+
 function printCard(){
 window.print();
 }
