@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bagas DH • Official Neon Card</title>
+<title>Bagas DH • Compact Neon Card</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 
@@ -25,31 +25,33 @@ font-family:'Montserrat',sans-serif;
 }
 
 body{
-background:radial-gradient(circle at top,#0a84ff55,#000 70%);
+background:
+radial-gradient(circle at top,#0a84ff55,#000 70%);
 display:flex;
 justify-content:center;
 align-items:center;
 min-height:100vh;
-padding:20px;
+padding:18px;
 overflow-x:hidden;
 }
 
 /* WRAPPER */
 .card-wrap{
 position:relative;
-width:360px;
+width:320px;
 max-width:100%;
-border-radius:32px;
+border-radius:28px;
 padding:3px;
 }
 
-/* NEON BORDER */
+/* NEON */
 .card-wrap::before{
 content:"";
 position:absolute;
 inset:0;
-border-radius:32px;
-background:linear-gradient(
+border-radius:28px;
+background:
+linear-gradient(
 270deg,
 #00c3ff,
 #1e90ff,
@@ -60,7 +62,7 @@ background:linear-gradient(
 background-size:400% 400%;
 animation:move 6s linear infinite;
 filter:blur(10px);
-opacity:0.9;
+opacity:.9;
 z-index:0;
 }
 
@@ -68,11 +70,13 @@ z-index:0;
 .card{
 position:relative;
 z-index:2;
-border-radius:30px;
+border-radius:26px;
 overflow:hidden;
-background:rgba(10,10,15,0.92);
+background:
+rgba(10,10,15,.94);
 color:#fff;
-box-shadow:0 30px 80px rgba(0,0,0,0.7);
+box-shadow:
+0 25px 70px rgba(0,0,0,.7);
 }
 
 /* WATERMARK */
@@ -82,9 +86,9 @@ inset:0;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:26px;
+font-size:20px;
 font-weight:900;
-color:rgba(255,255,255,0.05);
+color:rgba(255,255,255,.05);
 transform:rotate(-25deg);
 pointer-events:none;
 z-index:3;
@@ -93,7 +97,7 @@ letter-spacing:3px;
 
 /* HERO */
 .hero{
-height:180px;
+height:135px;
 position:relative;
 overflow:hidden;
 }
@@ -102,7 +106,7 @@ overflow:hidden;
 width:120%;
 height:120%;
 object-fit:cover;
-filter:blur(20px) brightness(0.6);
+filter:blur(20px) brightness(.6);
 transform:scale(1.2);
 position:absolute;
 }
@@ -119,76 +123,80 @@ transform:none;
 
 /* PROFILE */
 .profile{
-width:92px;
-height:92px;
-border-radius:24px;
+width:78px;
+height:78px;
+border-radius:22px;
 border:3px solid #1e90ff;
 position:absolute;
-top:130px;
-left:18px;
+top:92px;
+left:16px;
 z-index:5;
-box-shadow:0 20px 60px rgba(30,144,255,0.5);
+box-shadow:
+0 14px 40px rgba(30,144,255,.45);
 }
 
 /* CONTENT */
 .content{
-padding:65px 18px 18px;
+padding:48px 16px 14px;
 position:relative;
 z-index:4;
 }
 
 .name{
-font-size:24px;
+font-size:21px;
 font-weight:900;
 }
 
 .tag{
-font-size:11px;
+font-size:10px;
 color:#9ccfff;
-margin-top:5px;
+margin-top:4px;
 }
 
 .badge{
 display:inline-block;
-margin-top:10px;
-padding:6px 14px;
-background:linear-gradient(90deg,#1e90ff,#00c3ff);
+margin-top:9px;
+padding:5px 12px;
+background:
+linear-gradient(90deg,#1e90ff,#00c3ff);
 color:#000;
-font-size:10px;
+font-size:8px;
 font-weight:800;
 border-radius:999px;
 }
 
 /* STATS */
 .stats{
-margin-top:14px;
+margin-top:12px;
 display:flex;
-gap:8px;
+gap:7px;
 }
 
 .stat{
 flex:1;
 text-align:center;
-padding:8px;
-border-radius:14px;
-background:rgba(30,144,255,0.12);
-border:1px solid rgba(30,144,255,0.2);
+padding:7px;
+border-radius:13px;
+background:
+rgba(30,144,255,.12);
+border:
+1px solid rgba(30,144,255,.2);
 }
 
 .stat h3{
-font-size:13px;
+font-size:11px;
 }
 
 .stat p{
-font-size:9px;
+font-size:7px;
 color:#9ccfff;
 }
 
-/* TRACK SLIDER */
+/* TRACK */
 .track-slider{
-margin-top:16px;
+margin-top:12px;
 position:relative;
-height:95px;
+height:76px;
 overflow:hidden;
 }
 
@@ -196,16 +204,18 @@ overflow:hidden;
 position:absolute;
 width:100%;
 display:flex;
-gap:12px;
+gap:10px;
 align-items:center;
-padding:14px;
-border-radius:20px;
-background:rgba(0,140,255,0.12);
-border:1px solid rgba(0,140,255,0.25);
+padding:10px;
+border-radius:16px;
+background:
+rgba(0,140,255,.12);
+border:
+1px solid rgba(0,140,255,.25);
 
 opacity:0;
-transform:translateX(50px);
-transition:0.6s;
+transform:translateX(40px);
+transition:.6s;
 }
 
 .track.active{
@@ -214,19 +224,19 @@ transform:translateX(0);
 }
 
 .track img{
-width:65px;
-height:65px;
-border-radius:16px;
+width:50px;
+height:50px;
+border-radius:12px;
 object-fit:cover;
 }
 
 .track h4{
-font-size:13px;
-font-weight:900;
+font-size:11px;
+font-weight:800;
 }
 
 .track small{
-font-size:9px;
+font-size:7px;
 color:#9ccfff;
 display:block;
 margin-top:3px;
@@ -234,35 +244,44 @@ margin-top:3px;
 
 /* LINKS */
 .links{
-margin-top:14px;
+margin-top:10px;
 display:flex;
 flex-direction:column;
-gap:10px;
+gap:7px;
 }
 
 .link{
-padding:12px;
-border-radius:16px;
-background:rgba(30,144,255,0.08);
-border:1px solid rgba(30,144,255,0.15);
+padding:9px;
+border-radius:14px;
+background:
+rgba(30,144,255,.08);
+border:
+1px solid rgba(30,144,255,.15);
+transition:.2s;
+}
+
+.link:hover{
+transform:translateY(-2px);
+background:
+rgba(30,144,255,.14);
 }
 
 .link-title{
 display:flex;
 align-items:center;
-gap:8px;
-font-size:11px;
+gap:7px;
+font-size:9px;
 font-weight:700;
 }
 
 .icon{
-width:22px;
-height:22px;
+width:18px;
+height:18px;
 display:flex;
 align-items:center;
 justify-content:center;
-border-radius:7px;
-font-size:10px;
+border-radius:6px;
+font-size:8px;
 font-weight:900;
 }
 
@@ -272,7 +291,8 @@ color:#fff;
 }
 
 .apple{
-background:linear-gradient(135deg,#ff4d6d,#ff758f);
+background:
+linear-gradient(135deg,#ff4d6d,#ff758f);
 color:#fff;
 }
 
@@ -293,94 +313,97 @@ color:#fff;
 
 .url{
 display:block;
-margin-top:5px;
-font-size:9px;
+margin-top:4px;
+font-size:7px;
 color:#9ccfff;
 word-break:break-all;
 text-decoration:none;
-transition:0.2s;
+transition:.2s;
 }
 
 .url:hover{
 color:#00c3ff;
-text-decoration:underline;
 }
 
 /* VISITOR LOG */
 .logs{
 display:none;
-margin-top:18px;
-padding:14px;
-border-radius:18px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-max-height:500px;
+margin-top:12px;
+padding:10px;
+border-radius:14px;
+background:
+rgba(255,255,255,.05);
+border:
+1px solid rgba(255,255,255,.08);
+max-height:320px;
 overflow:auto;
 }
 
 .logs h4{
-font-size:12px;
-margin-bottom:10px;
+font-size:10px;
+margin-bottom:8px;
 color:#9ccfff;
 }
 
 .log-item{
-font-size:10px;
-padding:8px;
-border-bottom:1px solid rgba(255,255,255,0.08);
-line-height:1.6;
+font-size:8px;
+padding:6px;
+border-bottom:
+1px solid rgba(255,255,255,.08);
+line-height:1.5;
 }
 
 /* QR */
 .qr{
-margin-top:18px;
+margin-top:14px;
 display:none;
 justify-content:center;
 }
 
 .qr img{
-width:90px;
-height:90px;
+width:75px;
+height:75px;
 background:#fff;
 padding:4px;
-border-radius:14px;
+border-radius:10px;
 }
 
 /* BUTTONS */
 button{
 position:fixed;
-bottom:15px;
-width:52px;
-height:52px;
+bottom:12px;
+width:46px;
+height:46px;
 border-radius:50%;
 border:none;
-font-size:18px;
+font-size:15px;
 cursor:pointer;
 z-index:9999;
-box-shadow:0 8px 25px rgba(0,0,0,0.45);
+box-shadow:
+0 8px 25px rgba(0,0,0,.45);
 backdrop-filter:blur(10px);
 }
 
 .download-btn{
-right:15px;
+right:10px;
 background:#1e90ff;
 color:#fff;
 }
 
 .share-btn{
-right:80px;
+right:62px;
 background:#7a5cff;
 color:#fff;
 }
 
 .print-btn{
-right:145px;
+right:114px;
 background:#fff;
 color:#000;
 }
 
 .log-btn{
-right:210px;
+right:166px;
 background:#00c3ff;
 color:#000;
 }
@@ -393,45 +416,24 @@ color:#000;
 }
 
 /* MOBILE */
-@media (max-width:600px){
+@media(max-width:600px){
 
 body{
-padding:14px;
+padding:12px;
+padding-bottom:90px;
 align-items:flex-start;
-padding-bottom:100px;
 }
 
 .card-wrap{
 width:100%;
-max-width:360px;
-}
-
-button{
-width:48px;
-height:48px;
-font-size:16px;
-bottom:10px;
-}
-
-.download-btn{right:10px;}
-.share-btn{right:68px;}
-.print-btn{right:126px;}
-.log-btn{right:184px;}
-
-.profile{
-width:82px;
-height:82px;
-top:135px;
-}
-
-.name{
-font-size:22px;
+max-width:320px;
 }
 
 }
 
 /* PRINT */
 @media print{
+
 button{
 display:none!important;
 }
@@ -439,6 +441,7 @@ display:none!important;
 body{
 background:#000;
 }
+
 }
 
 </style>
@@ -450,7 +453,9 @@ background:#000;
 
 <div class="card" id="card">
 
-<div class="watermark">OFFICIAL BAGAS DH</div>
+<div class="watermark">
+OFFICIAL BAGAS DH
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -470,11 +475,17 @@ src="https://i.scdn.co/image/ab67616100005174cfe66a9d78691a42f9d55a19">
 
 <div class="name">Bagas DH</div>
 
-<div class="tag">Music Producer • Surabaya</div>
+<div class="tag">
+Music Producer • Surabaya
+</div>
 
-<div class="tag">Available on all platforms</div>
+<div class="tag">
+Available on all platforms
+</div>
 
-<div class="badge">✔ VERIFIED ARTIST</div>
+<div class="badge">
+✔ VERIFIED ARTIST
+</div>
 
 <!-- STATS -->
 <div class="stats" id="statsBox">
@@ -496,10 +507,9 @@ src="https://i.scdn.co/image/ab67616100005174cfe66a9d78691a42f9d55a19">
 
 </div>
 
-<!-- TRACK SLIDER -->
+<!-- TRACK -->
 <div class="track-slider" id="track">
 
-<!-- SLIDE 1 -->
 <div class="track active">
 
 <img src="https://i1.sndcdn.com/artworks-ZJjf7q0MW938-0-t500x500.png">
@@ -511,7 +521,6 @@ src="https://i.scdn.co/image/ab67616100005174cfe66a9d78691a42f9d55a19">
 
 </div>
 
-<!-- SLIDE 2 -->
 <div class="track">
 
 <img src="https://i.scdn.co/image/ab67616d0000b273e8e11d18e26bbd8f787e58b6">
@@ -608,7 +617,7 @@ https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg
 
 <div id="visitorLogs"></div>
 
-<canvas id="visitorChart" height="180"></canvas>
+<canvas id="visitorChart" height="160"></canvas>
 
 </div>
 
@@ -631,10 +640,7 @@ https://music.youtube.com/channel/UC6w_BgfGWYPrcbGKWbnVkJg
 
 <script>
 
-// ======================
-// TRACK SLIDER
-// ======================
-
+/* TRACK SLIDER */
 const tracks =
 document.querySelectorAll(".track");
 
@@ -656,10 +662,7 @@ tracks[currentTrack]
 
 },3000);
 
-// ======================
-// VISITOR ARRAY SYSTEM
-// ======================
-
+/* VISITOR SYSTEM */
 const todayKey =
 new Date().toISOString().split("T")[0];
 
@@ -681,7 +684,7 @@ localStorage.setItem(
 JSON.stringify(visitorData)
 );
 
-// TOTAL VISITOR
+/* TOTAL */
 let totalVisitors = 0;
 
 Object.keys(visitorData).forEach(date=>{
@@ -694,10 +697,7 @@ totalVisitors;
 document.getElementById("today").innerText =
 visitorData[todayKey].length;
 
-// ======================
-// GET IP + LOCATION
-// ======================
-
+/* GET IP */
 fetch("https://ipapi.co/json/")
 .then(r=>r.json())
 .then(d=>{
@@ -727,10 +727,7 @@ renderChart();
 
 });
 
-// ======================
-// RENDER LOGS
-// ======================
-
+/* LOGS */
 function renderLogs(){
 
 const box =
@@ -757,10 +754,7 @@ box.innerHTML += `
 
 renderLogs();
 
-// ======================
-// VISITOR CHART
-// ======================
-
+/* CHART */
 let chart;
 
 function renderChart(){
@@ -817,13 +811,11 @@ grid:{color:"rgba(255,255,255,0.05)"}
 
 }
 
-// ======================
-// TOGGLE LOGS
-// ======================
-
+/* TOGGLE LOG */
 function toggleLogs(){
 
-const logs = document.querySelector(".logs");
+const logs =
+document.querySelector(".logs");
 
 if(logs.style.display === "block"){
 
@@ -839,30 +831,32 @@ renderChart();
 
 }
 
-// ======================
-// DOWNLOAD FIX
-// ======================
-
+/* DOWNLOAD */
 async function download(){
 
-const qr = document.getElementById("qr");
+const qr =
+document.getElementById("qr");
 
-const stats = document.getElementById("statsBox");
+const stats =
+document.getElementById("statsBox");
 
-const track = document.getElementById("track");
+const track =
+document.getElementById("track");
 
-const logs = document.querySelector(".logs");
+const logs =
+document.querySelector(".logs");
 
-// show QR
 qr.style.display = "flex";
 
-// hide stats & logs
 stats.style.display = "none";
+
 track.style.display = "none";
+
 logs.style.display = "none";
 
-// wait render
-await new Promise(resolve => setTimeout(resolve, 300));
+await new Promise(resolve =>
+setTimeout(resolve,300)
+);
 
 const canvas =
 await html2canvas(
@@ -874,15 +868,17 @@ backgroundColor:"#000"
 }
 );
 
-const a=document.createElement("a");
+const a =
+document.createElement("a");
 
-a.download="bagas-neon-card.png";
+a.download =
+"bagas-compact-card.png";
 
-a.href=canvas.toDataURL("image/png");
+a.href =
+canvas.toDataURL("image/png");
 
 a.click();
 
-// restore
 setTimeout(()=>{
 
 qr.style.display = "none";
@@ -895,10 +891,7 @@ track.style.display = "block";
 
 }
 
-// ======================
-// SHARE
-// ======================
-
+/* SHARE */
 function shareCard(){
 
 const data={
@@ -921,10 +914,7 @@ alert("Link copied!");
 
 }
 
-// ======================
-// PRINT
-// ======================
-
+/* PRINT */
 function printCard(){
 window.print();
 }
