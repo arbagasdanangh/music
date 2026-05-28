@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VIP Member Card</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
+
+body{
+background: radial-gradient(circle at top,#0d2bff55,#000 70%);
+min-height:100vh;
+display:flex;
+justify-content:center;
+padding:20px;
+}
+
+/* WRAP */
+.wrap{
+width:360px;
+}
+
+/* CARD */
+.main{
+background: linear-gradient(145deg,#0f172a,#020617);
+padding:20px;
+border-radius:32px;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 25px 80px rgba(0,0,0,.6);
+}
+
+/* HEADER */
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.brand img{
+width:50px;
+height:50px;
+border-radius:16px;
+}
+
+.brand h2{
+font-size:15px;
+color:#fff;
+font-weight:800;
+}
+
+.brand p{
+font-size:9px;
+color:#8abfff;
+}
+
+.vip{
+padding:8px 12px;
+border-radius:999px;
+background:linear-gradient(90deg,#00c3ff,#7a5cff);
+color:#fff;
+font-size:9px;
+font-weight:900;
+}
+
+/* FORM */
+.form{
+margin-top:18px;
+}
+
+.input{
+width:100%;
+padding:14px;
+margin-bottom:10px;
+border-radius:14px;
+border:none;
+outline:none;
+background:rgba(255,255,255,.05);
+color:#fff;
+font-size:11px;
+}
+
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:16px;
+background:linear-gradient(90deg,#00c3ff,#7a5cff);
+color:#fff;
+font-weight:800;
+cursor:pointer;
+}
+
+/* LIST */
+.list{
+margin-top:18px;
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+/* CARD MEMBER */
+.card{
+position:relative;
+padding:18px;
+border-radius:28px;
+background:linear-gradient(145deg,#111827,#020617);
+border:1px solid rgba(255,255,255,.08);
+overflow:hidden;
+}
+
+/* glow */
+.card::before{
+content:"";
+position:absolute;
+top:-60px;
+right:-60px;
+width:180px;
+height:180px;
+background:radial-gradient(circle,rgba(0,195,255,.25),transparent 70%);
+border-radius:50%;
+}
+
+/* top */
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.profile{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.avatar{
+width:60px;
+height:60px;
+border-radius:20px;
+background:linear-gradient(135deg,#00c3ff,#7a5cff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+font-weight:900;
+color:#fff;
+}
+
+.profile h3{
+color:#fff;
+font-size:16px;
+font-weight:900;
+}
+
+.profile small{
+color:#8abfff;
+font-size:10px;
+}
+
+.badge{
+padding:8px 12px;
+border-radius:999px;
+background:linear-gradient(90deg,#00c3ff,#7a5cff);
+font-size:9px;
+font-weight:900;
+color:#fff;
+}
+
+/* info */
+.info{
+margin-top:15px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.box{
+padding:12px;
+border-radius:14px;
+background:rgba(255,255,255,.05);
+}
+
+.box span{
+font-size:8px;
+color:#8abfff;
+}
+
+.box h4{
+color:#fff;
+font-size:12px;
+margin-top:5px;
+}
+
+/* bottom */
+.bottom{
+margin-top:15px;
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.qr img{
+width:80px;
+height:80px;
+background:#fff;
+padding:4px;
+border-radius:14px;
+}
+
+.text{
+color:#9ccfff;
+font-size:8px;
+line-height:1.5;
+}
+
+/* buttons */
+.action{
+margin-top:15px;
+display:flex;
+gap:10px;
+}
+
+.action button{
+flex:1;
+padding:12px;
+border:none;
+border-radius:14px;
+font-weight:800;
+cursor:pointer;
+}
+
+.download{background:#00c3ff;color:#000;}
+.delete{background:#ff3d5a;color:#fff;}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<div class="main">
+
+<div class="header">
+<div class="brand">
+<img src="https://i.scdn.co/image/ab67616100005174cfe66a9d78691a42f9d55a19">
+<div>
+<h2>Bagas DH</h2>
+<p>VIP Member System</p>
+</div>
+</div>
+<div class="vip">VIP</div>
+</div>
+
+<div class="form">
+<input class="input" id="name" placeholder="Nama Member">
+<input class="input" id="role" placeholder="Role / Status">
+<button class="btn" onclick="addMember()">Tambah Member</button>
+</div>
+
+<div class="list" id="list"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let members = JSON.parse(localStorage.getItem("members")) || [];
+
+function render(){
+
+const list = document.getElementById("list");
+list.innerHTML = "";
+
+members.forEach((m,i)=>{
+
+list.innerHTML += `
+<div class="card" id="card-${i}">
+
+<div class="top">
+<div class="profile">
+<div class="avatar">${m.name.charAt(0)}</div>
+<div>
+<h3>${m.name}</h3>
+<small>${m.role}</small>
+</div>
+</div>
+
+<div class="badge">VIP</div>
+</div>
+
+<div class="info">
+<div class="box">
+<span>ID</span>
+<h4>VIP-${1000+i}</h4>
+</div>
+<div class="box">
+<span>Status</span>
+<h4>ACTIVE</h4>
+</div>
+</div>
+
+<div class="bottom">
+<div class="qr">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=VIP-${1000+i}">
+</div>
+<div class="text">
+Official VIP Member Card Access System
+</div>
+</div>
+
+<div class="action">
+<button class="download" onclick="downloadCard(${i})">Download</button>
+<button class="delete" onclick="deleteMember(${i})">Delete</button>
+</div>
+
+</div>
+`;
+});
+
+}
+
+render();
+
+function addMember(){
+
+const name = document.getElementById("name").value;
+const role = document.getElementById("role").value;
+
+if(!name) return alert("Isi nama dulu");
+
+members.push({
+name,
+role: role || "Member"
+});
+
+localStorage.setItem("members",JSON.stringify(members));
+
+render();
+
+document.getElementById("name").value="";
+document.getElementById("role").value="";
+}
+
+function deleteMember(i){
+members.splice(i,1);
+localStorage.setItem("members",JSON.stringify(members));
+render();
+}
+
+async function downloadCard(i){
+
+const card = document.getElementById(`card-${i}`);
+const buttons = card.querySelector(".action");
+
+/* HIDE BUTTON SAAT DOWNLOAD */
+buttons.style.display = "none";
+
+await new Promise(r=>setTimeout(r,200));
+
+const canvas = await html2canvas(card,{
+scale:4,
+useCORS:true,
+backgroundColor:"#020617"
+});
+
+const a = document.createElement("a");
+a.href = canvas.toDataURL("image/png");
+a.download = `vip-member-${i}.png`;
+
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+
+/* SHOW BUTTON AGAIN */
+buttons.style.display = "flex";
+
+}
+
+</script>
+
+</body>
+</html>
